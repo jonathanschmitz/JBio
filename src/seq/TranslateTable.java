@@ -2,6 +2,7 @@ package seq;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -31,7 +32,7 @@ public class TranslateTable {
 	}
 
 	public AminoAcidSequence translate(String codon) {
-		AminoAcidSequence aa = baseToAA.get(codon);
+		AminoAcidSequence aa = baseToAA.get(new Sequence(codon));
 		return aa;
 	}
 
