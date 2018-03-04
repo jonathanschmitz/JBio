@@ -14,23 +14,23 @@ import seq.Utils;
 public class FastaReader {
 	private static ArrayList<Sequence> read(String fastaPath) {
 		ArrayList<Sequence> seqs = new ArrayList<Sequence>();
-		String key = "";
+		String seqID = "";
 		ArrayList<Sequence> tmpList = new ArrayList<Sequence>();
 		try {
 			BufferedReader reader = new BufferedReader(new FileReader(fastaPath));
 			String line;
 			while ((line = reader.readLine()) != null) {
 				if (line.charAt(0) == '>') {
-					if (!key.isEmpty()) {
-						saveSeq(key, tmpList);
+					if (!seqID.isEmpty()) {
+						saveSeq(seqID, tmpList, seqs);
 						tmpList = new ArrayList<Sequence>();
 					}
-					key = line.split(" ")[0].substring(1);
+					seqID = line.split(" ")[0].substring(1);
 				} else {
 					tmpList.add(new Sequence(line.trim()));
 				}
 			}
-			saveSeq(key, tmpList);
+			saveSeq(seqID, tmpList, seqs);
 			reader.close();
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -38,9 +38,8 @@ public class FastaReader {
 		return seqs;
 	}
 	
-	private static void saveSeq(String key, ArrayList<Sequence> seqList) {
-		System.out.println(key);
-		Sequence seq = Utils.join(seqList);
+	private static void saveSeq(String key, ArrayList<Sequence> tmpList, ArrayList<Sequence> seqList) {
+		Sequence seq = Utils.join(tmpList);
 		seq.setId(key);
 		seqList.add(seq);
 	}
@@ -52,8 +51,9 @@ public class FastaReader {
 		String fastaPath = args[0];
 		System.out.println(fastaPath);
 		ArrayList<Sequence> seqs = read(fastaPath);
+		System.out.println("Found sequences:");
 		for (Sequence seq: seqs) {
-			System.out.println(seq.getId() + ": " + seq.getSeq());
+			System.out.println("\t" + seq.getId() + ": " + seq.getSeq());
 		}
 	}
 }
