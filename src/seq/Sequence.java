@@ -6,6 +6,7 @@ import java.util.Arrays;
 public class Sequence {
 	private Integer length;
 	private String seq;
+	private String id;
 
 	public Integer getLength() {
 		return length;
@@ -18,6 +19,12 @@ public class Sequence {
 	public Sequence(String seq) {
 		this.setSeq(seq);
 		this.setLength(seq.length());
+	}
+
+	public Sequence(String seq, String id) {
+		this.setSeq(seq);
+		this.setLength(seq.length());
+		this.setId(id);
 	}
 
 	public String getSeq() {
@@ -52,5 +59,13 @@ public class Sequence {
 	@Override
 	public int hashCode() {
 		return this.getSeq().hashCode();
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
 	}
 }
