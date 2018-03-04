@@ -7,6 +7,15 @@ public class Sequence {
 	private Integer length;
 	private String seq;
 	private String id;
+	private String seqType;
+
+	public String getSeqType() {
+		return seqType;
+	}
+
+	public void setSeqType(String seqType) {
+		this.seqType = seqType;
+	}
 
 	public Integer getLength() {
 		return length;

@@ -25,13 +25,15 @@ public class DNASequence extends Sequence {
 	
 	public DNASequence(String string) {
 		super(string);
-		Set<Character> stringBases  = new HashSet<Character>();
+		Set<Character> stringBases  = new HashSet<Character>(DNASequence.DNABases);
 		for (Character c: string.toCharArray())
 			stringBases.add(c);
 		if (!stringBases.equals(DNASequence.DNABases))
 			throw new java.lang.RuntimeException(
 					"Trying to create DNA sequence containing non-DNA Characters");
+		this.setSeqType("DNA");
 	}
+
 	public static void main(String[] args) {
 		DNASequence seq = new DNASequence("ATGTGA");
 		System.out.println(seq.translate().getSeq());

@@ -12,12 +12,13 @@ public class RNASequence extends Sequence {
 
 	public RNASequence(String seq) {
 		super(seq);
-		Set<Character> stringBases  = new HashSet<Character>();
+		Set<Character> stringBases  = new HashSet<Character>(RNASequence.RNABases);
 		for (Character c: seq.toCharArray())
 			stringBases.add(c);
 		if (!stringBases.equals(RNASequence.RNABases))
 			throw new java.lang.RuntimeException(
 					"Trying to create RNA sequence containing non-RNA Characters");
+		this.setSeqType("RNA");
 	}
 
 	public AminoAcidSequence translate() {

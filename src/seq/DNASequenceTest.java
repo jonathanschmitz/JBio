@@ -10,6 +10,13 @@ import org.junit.jupiter.api.Test;
 class DNASequenceTest {
 
 	@Test
+	void testSeqType() {
+		DNASequence testSeq = new DNASequence("ATG");
+		assertEquals(testSeq.getSeqType(), "DNA");
+	}
+
+
+	@Test
 	void testBaseCheck() {
 		@SuppressWarnings("unused")
 		DNASequence testSeq = new DNASequence("ATCG");

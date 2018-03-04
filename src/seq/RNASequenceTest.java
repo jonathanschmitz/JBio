@@ -8,6 +8,12 @@ import static org.hamcrest.CoreMatchers.is;
 import org.junit.jupiter.api.Test;
 
 class RNASequenceTest {
+	
+	@Test
+	void testSeqType() {
+		RNASequence testSeq = new RNASequence("AUG");
+		assertEquals(testSeq.getSeqType(), "RNA");
+	}
 
 	@Test
 	void testBaseCheck() {
