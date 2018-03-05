@@ -11,15 +11,25 @@ public class AminoAcidSequence extends Sequence {
 			));
 	// TODO does this make sense: I don't want to reinitialise this
 	public static final hydrophobicityTable hydroTable = new hydrophobicityTable();
-
-	public AminoAcidSequence(String string) {
-		super(string);
+	
+	private void checkSeq() {
 		Set<Character> stringBases  = new HashSet<Character>(AminoAcidSequence.AminoAcids);
-		for (Character c: string.toCharArray())
+		for (Character c: this.getSeq().toCharArray())
 			stringBases.add(c);
 		if (!stringBases.equals(AminoAcidSequence.AminoAcids))
 			throw new java.lang.RuntimeException(
 					"Trying to create Amino Acid sequence containing non-Amino Acid Characters");
+	}
+
+	public AminoAcidSequence(String string) {
+		super(string);
+		this.checkSeq();
+		this.setSeqType("AminoAcid");
+	}
+	
+	public AminoAcidSequence(Sequence seq) {
+		super(seq.getSeq());
+		this.checkSeq();
 		this.setSeqType("AminoAcid");
 	}
 	
