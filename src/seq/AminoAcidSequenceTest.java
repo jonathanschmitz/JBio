@@ -7,6 +7,8 @@ import static org.hamcrest.CoreMatchers.is;
 
 import org.junit.jupiter.api.Test;
 
+import seqIO.FastaReader;
+
 class AminoAcidSequenceTest {
 	
 	@Test
@@ -26,6 +28,12 @@ class AminoAcidSequenceTest {
 		} catch (RuntimeException exc) {
 	        assertThat(exc.getMessage(), is("Trying to create Amino Acid sequence containing non-Amino Acid Characters"));
 	    }
+	}
+	
+	@Test
+	void hydrophobTest() {
+		AminoAcidSequence testSeq = (AminoAcidSequence) FastaReader.readSingleSeq("");
+		assertEquals(testSeq.hydrophobicity(), 2.5, 0.0001);
 	}
 
 }

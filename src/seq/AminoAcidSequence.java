@@ -9,6 +9,8 @@ public class AminoAcidSequence extends Sequence {
 			'G', 'H', 'I', 'K', 'L', 'M', 'N', 'P', 'Q', 'R', 'S',  'T', 'V', 'W', 'Y',
 			'*', 'U' // Also allow * for stop codons and U for Selenocystein, these are somewhat common
 			));
+	// TODO does this make sense: I don't want to reinitialise this
+	public static final hydrophobicityTable hydroTable = new hydrophobicityTable();
 
 	public AminoAcidSequence(String string) {
 		super(string);
@@ -19,5 +21,13 @@ public class AminoAcidSequence extends Sequence {
 			throw new java.lang.RuntimeException(
 					"Trying to create Amino Acid sequence containing non-Amino Acid Characters");
 		this.setSeqType("AminoAcid");
+	}
+	
+	public float hydrophobicity() {
+		float hyd = 0;
+		for (Character aminoAcid: this.getSeq().toCharArray()) {
+			hyd += hydroTable.get(aminoAcid);
+		}
+		return hyd / this.getLength();
 	}
 }
