@@ -53,4 +53,24 @@ public class FastaReader {
 			System.out.println("\t" + seq.getId() + ": " + seq.getSeq());
 		}
 	}
+
+	public static Sequence readSingleSeq(String fastaPath) {
+		String seqID = "";
+		ArrayList<Sequence> tmpList = new ArrayList<Sequence>();
+		try {
+			BufferedReader reader = new BufferedReader(new FileReader(fastaPath));
+			String line = reader.readLine();
+			seqID = line.split(" ")[0].substring(1);
+			while ((line = reader.readLine()) != null) {
+				tmpList.add(new Sequence(line.trim()));
+			}
+			reader.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		Sequence seq = Utils.join(tmpList);
+		seq.setId(seqID);
+		return seq;
+		
+	}
 }
