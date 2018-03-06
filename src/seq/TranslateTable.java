@@ -34,8 +34,4 @@ public class TranslateTable {
 		AminoAcidSequence aa = baseToAA.get(new Sequence(codon));
 		return aa;
 	}
-
-	public static void main(String[] args) {
-		TranslateTable table = new TranslateTable();
-	}
 }
