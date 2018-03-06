@@ -12,7 +12,7 @@ import seq.Sequence;
 import seq.Utils;
 
 public class FastaReader {
-	private static SeqCollection read(String fastaPath) {
+	public static SeqCollection read(String fastaPath) {
 		SeqCollection seqs = new SeqCollection();
 		String seqID = "";
 		ArrayList<Sequence> tmpList = new ArrayList<Sequence>();
