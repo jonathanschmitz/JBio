@@ -23,6 +23,14 @@ public class SeqCollection implements java.lang.Iterable<Sequence>{
 	public Sequence get(String seqId) {
 		return this.map.get(seqId);
 	}
+	
+	public ArrayList<String> getIdList(){
+		return this.idList;
+	}
+	
+	public int length() {
+		return this.idList.size();
+	}
 
 	@Override
 	public Iterator iterator() {
@@ -34,7 +42,7 @@ public class SeqCollection implements java.lang.Iterable<Sequence>{
 
 		@Override
 		public boolean hasNext() {
-			if (position < SeqCollection.this.idList.size())
+			if (position < SeqCollection.this.length())
 				return true;
 			else
 				return false;
