@@ -4,13 +4,16 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
+import seq.SeqCollection;
 import seq.Sequence;
 import seq.Utils;
 
 public class FastaReader {
-	private static ArrayList<Sequence> read(String fastaPath) {
-		ArrayList<Sequence> seqs = new ArrayList<Sequence>();
+	private static SeqCollection read(String fastaPath) {
+		SeqCollection seqs = new SeqCollection();
 		String seqID = "";
 		ArrayList<Sequence> tmpList = new ArrayList<Sequence>();
 		try {
@@ -35,7 +38,7 @@ public class FastaReader {
 		return seqs;
 	}
 	
-	private static void saveSeq(String key, ArrayList<Sequence> tmpList, ArrayList<Sequence> seqList) {
+	private static void saveSeq(String key, ArrayList<Sequence> tmpList, SeqCollection seqList) {
 		Sequence seq = Utils.join(tmpList);
 		seq.setId(key);
 		seqList.add(seq);
@@ -47,7 +50,7 @@ public class FastaReader {
 		}
 		String fastaPath = args[0];
 		System.out.println(fastaPath);
-		ArrayList<Sequence> seqs = read(fastaPath);
+		SeqCollection seqs = read(fastaPath);
 		System.out.println("Found sequences:");
 		for (Sequence seq: seqs) {
 			System.out.println("\t" + seq.getId() + ": " + seq.getSeq());
