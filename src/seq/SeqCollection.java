@@ -33,11 +33,11 @@ public class SeqCollection implements java.lang.Iterable<Sequence>{
 	}
 
 	@Override
-	public Iterator iterator() {
+	public Iterator<Sequence> iterator() {
 		return new SeqCollectionIterator();
 	}
 	
-	private class SeqCollectionIterator implements Iterator {
+	private class SeqCollectionIterator implements Iterator<Sequence> {
         private int position = 0;
 
 		@Override
@@ -49,7 +49,7 @@ public class SeqCollection implements java.lang.Iterable<Sequence>{
 		}
 
 		@Override
-		public Object next() {
+		public Sequence next() {
 			if (this.hasNext()) {
 				String nextId = SeqCollection.this.idList.get(position++);
                 return SeqCollection.this.get(nextId);
