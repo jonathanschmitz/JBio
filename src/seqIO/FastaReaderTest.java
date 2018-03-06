@@ -3,10 +3,12 @@ package seqIO;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import org.junit.jupiter.api.Test;
 
 import seq.SeqCollection;
+import seq.Sequence;
 
 class FastaReaderTest {
 
@@ -28,6 +30,14 @@ class FastaReaderTest {
 		testList.add("sp|P69891|HBG1_HUMAN");
 		testList.add("sp|P69892|HBG2_HUMAN");
 		assertEquals(testList, seqs.getIdList());
+	}
+	
+	@Test
+	void testIterator() {
+		String testPath = FastaReaderTest.class.getResource("../StaticFiles/test.fasta").getFile();
+		SeqCollection seqs = FastaReader.read(testPath);
+		Iterator<Sequence> iter = seqs.iterator();
+		assertEquals(iter.next().getId(), "sp|P01308|INS_HUMAN");
 	}
 
 }
