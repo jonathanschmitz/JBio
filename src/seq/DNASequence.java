@@ -6,6 +6,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class DNASequence extends Sequence {
+	// TODO is this the correct place to define this?
 	TranslateTable table = new TranslateTable();
 	public static final Set<Character> DNABases = new HashSet<>(Arrays.asList('A', 'C', 'G', 'T'));
 	
