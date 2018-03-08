@@ -40,4 +40,18 @@ public class AminoAcidSequence extends Sequence {
 		}
 		return hyd / this.getLength();
 	}
+
+	public float[] hydrophobicityWindow() {
+		return this.hydrophobicityWindow(19);
+	}
+	
+	public float[] hydrophobicityWindow(int windowSize) {
+		int windowNum = this.getLength() - windowSize;
+		float[] windows = new float[windowNum];
+		for (int i = 0; i <= windowNum; i++) {
+			AminoAcidSequence subSeq = new AminoAcidSequence(this.getSubseq(i, i + windowSize));
+			windows[i] = subSeq.hydrophobicity();
+		}
+		return windows;
+	}
 }
