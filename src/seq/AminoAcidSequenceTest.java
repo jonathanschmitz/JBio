@@ -36,5 +36,13 @@ class AminoAcidSequenceTest {
 		AminoAcidSequence testSeq = new AminoAcidSequence(FastaReader.readSingleSeq(testPath));
 		assertEquals(testSeq.hydrophobicity(), -0.5166, 0.0001);
 	}
+	
+	@Test
+	void hydroWindowTest() {
+		String testPath = AminoAcidSequenceTest.class.getResource("../StaticFiles/P5131.fasta").getFile();
+		AminoAcidSequence testSeq = new AminoAcidSequence(FastaReader.readSingleSeq(testPath));
+		assertArrayEquals(testSeq.hydrophobicityWindow(), new float[] {4.5f, 4.026f}, 0.001f);
+		
+	}
 
 }
