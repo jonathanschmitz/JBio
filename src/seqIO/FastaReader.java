@@ -4,8 +4,6 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
 import seq.SeqCollection;
 import seq.Sequence;
@@ -37,7 +35,7 @@ public class FastaReader {
 		}
 		return seqs;
 	}
-	
+
 	private static void saveSeq(String key, ArrayList<Sequence> tmpList, SeqCollection seqList) {
 		Sequence seq = Utils.join(tmpList);
 		seq.setId(key);
@@ -74,6 +72,6 @@ public class FastaReader {
 		Sequence seq = Utils.join(tmpList);
 		seq.setId(seqID);
 		return seq;
-		
+
 	}
 }
