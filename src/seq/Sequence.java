@@ -77,4 +77,8 @@ public class Sequence {
 	public void setId(String id) {
 		this.id = id;
 	}
+	
+	public Sequence getSubseq(int start, int stop) {
+		return new Sequence(this.seq.substring(start, stop));
+	}
 }
