@@ -72,6 +72,5 @@ public class FastaReader {
 		Sequence seq = Utils.join(tmpList);
 		seq.setId(seqID);
 		return seq;
-
 	}
 }
