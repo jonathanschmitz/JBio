@@ -3,6 +3,10 @@ package seq;
 import java.util.ArrayList;
 
 public class Utils {
+	/**
+	 * @param seqList A list of Sequence objects to join
+	 * @return A Sequence object containing the joined sequences
+	 */
 	public static Sequence join(ArrayList<Sequence> seqList) {
 		StringBuilder builder = new StringBuilder();
 		for (Sequence seq : seqList)

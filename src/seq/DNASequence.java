@@ -5,11 +5,18 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
+/**
+ * @author jonathanschmitz
+ *
+ */
 public class DNASequence extends Sequence {
 	// TODO is this the correct place to define this?
 	TranslateTable table = new TranslateTable();
 	public static final Set<Character> DNABases = new HashSet<>(Arrays.asList('A', 'C', 'G', 'T'));
 
+	/**
+	 * @return An AminoAcidSequence object representing the translated DNASequence
+	 */
 	public AminoAcidSequence translate() {
 		ArrayList<Sequence> outList = new ArrayList<Sequence>();
 		String sequence = this.getSeq();
@@ -24,6 +31,11 @@ public class DNASequence extends Sequence {
 		return new AminoAcidSequence(transSequence.getSeq());
 	}
 
+	/**
+	 * @param string
+	 *            A string to construct a Sequence from. Must only contain DNA bases
+	 *            (A, C, G, T)
+	 */
 	public DNASequence(String string) {
 		super(string);
 		Set<Character> stringBases = new HashSet<Character>(DNASequence.DNABases);
