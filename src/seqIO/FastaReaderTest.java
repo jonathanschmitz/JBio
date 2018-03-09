@@ -16,12 +16,12 @@ class FastaReaderTest {
 	void testReader() {
 		String testPath = FastaReaderTest.class.getResource("../StaticFiles/test.fasta").getFile();
 		SeqCollection seqs = FastaReader.read(testPath);
-		assertEquals(seqs.get("sp|P01308|INS_HUMAN").getSeq(), 
+		assertEquals(seqs.get("sp|P01308|INS_HUMAN").getSeq(),
 				"MALWMRLLPLLALLALWGPDPAAAFVNQHLCGSHLVEALYLVCGERGFFYTPKTRREAED"
-				+ "LQVGQVELGGGPGAGSLQPLALEGSLQKRGIVEQCCTSICSLYQLENYCN");
-		assertNotEquals(seqs.get("sp|P01308|INS_HUMAN").getSeq(), 
+						+ "LQVGQVELGGGPGAGSLQPLALEGSLQKRGIVEQCCTSICSLYQLENYCN");
+		assertNotEquals(seqs.get("sp|P01308|INS_HUMAN").getSeq(),
 				"MALWMURLLPLLALLALWGPDPAAAFVNQHLCGSHLVEALYLVCGERGFFYTPKTRREAED"
-				+ "LQVGQVELGGGPGAGSLQPLALEGSLQKRGIVEQCCTSICSLYQLENYCN");
+						+ "LQVGQVELGGGPGAGSLQPLALEGSLQKRGIVEQCCTSICSLYQLENYCN");
 		assertEquals(5, seqs.length());
 		ArrayList<String> testList = new ArrayList<String>();
 		testList.add("sp|P01308|INS_HUMAN");
@@ -31,7 +31,7 @@ class FastaReaderTest {
 		testList.add("sp|P69892|HBG2_HUMAN");
 		assertEquals(testList, seqs.getIdList());
 	}
-	
+
 	@Test
 	void testIterator() {
 		String testPath = FastaReaderTest.class.getResource("../StaticFiles/test.fasta").getFile();

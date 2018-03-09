@@ -24,7 +24,7 @@ public class Sequence {
 	public void setLength(Integer length) {
 		this.length = length;
 	}
-	
+
 	public Sequence(String seq) {
 		this.setSeq(seq);
 		this.setLength(seq.length());
@@ -43,14 +43,13 @@ public class Sequence {
 	public void setSeq(String seq) {
 		this.seq = seq;
 	}
-	
-	
+
 	public static void main(String[] args) {
 		ArrayList<Sequence> seqList = new ArrayList<Sequence>(Arrays.asList(new Sequence("A"), new Sequence("B")));
 		Sequence outseq = Utils.join(seqList);
 		System.out.println(outseq.getSeq());
 	}
-	
+
 	@Override
 	public boolean equals(Object comp) {
 		if (!(comp instanceof Sequence)) {
@@ -59,12 +58,11 @@ public class Sequence {
 		Sequence seqComp = (Sequence) comp;
 		if (this.getSeq().equals(seqComp.getSeq())) {
 			return true;
-		}
-		else {
+		} else {
 			return false;
 		}
 	}
-	
+
 	@Override
 	public int hashCode() {
 		return this.getSeq().hashCode();
@@ -77,7 +75,7 @@ public class Sequence {
 	public void setId(String id) {
 		this.id = id;
 	}
-	
+
 	public Sequence getSubseq(int start, int stop) {
 		return new Sequence(this.seq.substring(start, stop));
 	}

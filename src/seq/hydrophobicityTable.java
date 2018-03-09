@@ -26,7 +26,6 @@ public class hydrophobicityTable {
 		}
 	}
 
-	
 	public Float get(Character aa) {
 		return hydroTable.get(aa);
 	}

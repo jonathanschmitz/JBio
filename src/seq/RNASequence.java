@@ -12,20 +12,19 @@ public class RNASequence extends Sequence {
 
 	public RNASequence(String seq) {
 		super(seq);
-		Set<Character> stringBases  = new HashSet<Character>(RNASequence.RNABases);
-		for (Character c: seq.toCharArray())
+		Set<Character> stringBases = new HashSet<Character>(RNASequence.RNABases);
+		for (Character c : seq.toCharArray())
 			stringBases.add(c);
 		if (!stringBases.equals(RNASequence.RNABases))
-			throw new java.lang.RuntimeException(
-					"Trying to create RNA sequence containing non-RNA Characters");
+			throw new java.lang.RuntimeException("Trying to create RNA sequence containing non-RNA Characters");
 		this.setSeqType("RNA");
 	}
 
 	public AminoAcidSequence translate() {
 		ArrayList<Sequence> outList = new ArrayList<Sequence>();
 		String sequence = this.getSeq();
-		for (int i = 0, l = sequence.length() - 2; i < l; i+=3) {
-			String codon = sequence.substring(i, i+3);
+		for (int i = 0, l = sequence.length() - 2; i < l; i += 3) {
+			String codon = sequence.substring(i, i + 3);
 			AminoAcidSequence translation = table.translate(codon);
 			outList.add(translation);
 		}

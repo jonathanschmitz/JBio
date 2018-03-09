@@ -4,7 +4,6 @@ import static org.junit.Assert.*;
 import static org.junit.Assert.fail;
 import static org.hamcrest.CoreMatchers.is;
 
-
 import org.junit.jupiter.api.Test;
 
 class DNASequenceTest {
@@ -15,18 +14,17 @@ class DNASequenceTest {
 		assertEquals(testSeq.getSeqType(), "DNA");
 	}
 
-
 	@Test
 	void testBaseCheck() {
 		@SuppressWarnings("unused")
 		DNASequence testSeq = new DNASequence("ATCG");
-		
+
 		try {
 			new DNASequence("ATCGU");
-	        fail("Expected an RuntimeException to be thrown");
+			fail("Expected an RuntimeException to be thrown");
 		} catch (RuntimeException exc) {
-	        assertThat(exc.getMessage(), is("Trying to create DNA sequence containing non-DNA Characters"));
-	    }
+			assertThat(exc.getMessage(), is("Trying to create DNA sequence containing non-DNA Characters"));
+		}
 	}
 
 	@Test

@@ -4,11 +4,10 @@ import static org.junit.Assert.*;
 import static org.junit.Assert.fail;
 import static org.hamcrest.CoreMatchers.is;
 
-
 import org.junit.jupiter.api.Test;
 
 class RNASequenceTest {
-	
+
 	@Test
 	void testSeqType() {
 		RNASequence testSeq = new RNASequence("AUG");
@@ -19,13 +18,13 @@ class RNASequenceTest {
 	void testBaseCheck() {
 		@SuppressWarnings("unused")
 		RNASequence testSeq = new RNASequence("AUCG");
-		
+
 		try {
 			new RNASequence("AUCGT");
-	        fail("Expected an RuntimeException to be thrown");
+			fail("Expected an RuntimeException to be thrown");
 		} catch (RuntimeException exc) {
-	        assertThat(exc.getMessage(), is("Trying to create RNA sequence containing non-RNA Characters"));
-	    }
+			assertThat(exc.getMessage(), is("Trying to create RNA sequence containing non-RNA Characters"));
+		}
 	}
 
 	@Test
