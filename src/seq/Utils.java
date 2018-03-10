@@ -14,15 +14,15 @@ public class Utils {
 		Sequence outseq = new Sequence(builder.toString());
 		return outseq;
 	}
+
+//	TODO This is what I want: 
+//	public static <T extends Sequence> T joinT(ArrayList<T> seqList) {
+//		StringBuilder builder = new StringBuilder();
+//		for (Sequence seq : seqList)
+//			builder.append(seq.getSeq());
+//		T outseq = new T(builder.toString());
+//		return outseq;
+//	}
+//  But it does not seem possible: https://stackoverflow.com/questions/12093541/cannot-instantiate-generic-data-type-in-class
+
 }
-// public class Utils {
-// public Sequence join(ArrayList<? extends Sequence> seqList, Sequence outseq)
-// {
-// Class elementType = seqList.get(0).getClass();
-// StringBuilder builder = new StringBuilder();
-// for (Sequence seq:seqList)
-// builder.append(seq.getSeq());
-// outseq = new Sequence (builder.toString());
-// return outseq;
-// }
-// }
