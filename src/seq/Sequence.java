@@ -40,7 +40,7 @@ public class Sequence {
 		return seq;
 	}
 
-	public void setSeq(String seq) {
+	private void setSeq(String seq) {
 		this.seq = seq;
 	}
 
