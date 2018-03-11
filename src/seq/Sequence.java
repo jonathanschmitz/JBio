@@ -7,7 +7,7 @@ public class Sequence {
 	private Integer length;
 	private String seq;
 	private String id;
-	private String seqType;
+	private String seqType = "undef.";
 
 	public String getSeqType() {
 		return seqType;
@@ -78,5 +78,14 @@ public class Sequence {
 
 	public Sequence getSubseq(int start, int stop) {
 		return new Sequence(this.seq.substring(start, stop));
+	}
+	
+	public String toString() {
+		String outSeq = this.seq;
+		int outSeqLen = outSeq.length();
+		if (outSeqLen > 60) 
+			outSeq = outSeq.substring(0, 28) + "..." + outSeq.substring(outSeqLen - 28);
+		String outStr = "Seq Obj: " + this.id + ", " + this.seqType + ", " + outSeq;
+		return outStr;
 	}
 }

@@ -51,7 +51,7 @@ public class FastaReader {
 		SeqCollection seqs = read(fastaPath);
 		System.out.println("Found sequences:");
 		for (Sequence seq : seqs) {
-			System.out.println("\t" + seq.getId() + ": " + seq.getSeq());
+			System.out.println("\t" + seq.toString());
 		}
 	}
 
