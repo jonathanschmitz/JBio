@@ -125,6 +125,14 @@ public class Sequence {
 	public Sequence getSubseq(int start, int stop) {
 		return new Sequence(this.seq.substring(start, stop));
 	}
+
+	/**
+	 * @param stop Stop index of subsequence
+	 * @return Sequence object representing the subsequence from start of the sequence to stop.
+	 */
+	public Sequence getSubseq(int stop) {
+		return this.getSubseq(0, stop);
+	}
 	
 	public String toString() {
 		String outSeq = this.seq;
