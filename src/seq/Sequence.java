@@ -3,43 +3,78 @@ package seq;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+/**
+ * @author jonathanschmitz
+ *
+ */
+/**
+ * @author jonathanschmitz
+ *
+ */
 public class Sequence {
 	private Integer length;
 	private String seq;
 	private String id;
 	private String seqType = "undef.";
 
+	/**
+	 * @return Type of sequence: DNA, RNA, or amino acid
+	 */
 	public String getSeqType() {
 		return seqType;
 	}
 
+	/**
+	 * @param seqType Set type of sequence to seqType
+	 */
 	public void setSeqType(String seqType) {
 		this.seqType = seqType;
 	}
 
+	/**
+	 * @return Return number of residues in sequence.
+	 */
 	public Integer getLength() {
 		return length;
 	}
 
-	public void setLength(Integer length) {
+	/**
+	 * @param length Length to set sequence to. Should only be called during construction.
+	 */
+	private void setLength(Integer length) {
 		this.length = length;
 	}
 
+	/**
+	 * @param seq String to construct Sequence from.
+	 */
 	public Sequence(String seq) {
 		this.setSeq(seq);
 		this.setLength(seq.length());
 	}
 
+	/**
+	 * @param seq String to construct Sequence from
+	 * @param id ID to set.
+	 */
 	public Sequence(String seq, String id) {
 		this.setSeq(seq);
 		this.setLength(seq.length());
 		this.setId(id);
 	}
 
+	/**
+	 * @return String of sequences' residues.
+	 */
 	public String getSeq() {
 		return seq;
 	}
 
+	/**
+	 * @param seq String to set sequence to
+	 * 
+	 * Only to be called during construction.
+	 */
 	private void setSeq(String seq) {
 		this.seq = seq;
 	}
@@ -68,14 +103,25 @@ public class Sequence {
 		return this.getSeq().hashCode();
 	}
 
+	/**
+	 * @return ID of sequence
+	 */
 	public String getId() {
 		return id;
 	}
 
+	/**
+	 * @param id Set ID of sequence
+	 */
 	public void setId(String id) {
 		this.id = id;
 	}
 
+	/**
+	 * @param start Start index of subsequence
+	 * @param stop Stop index of subsequence
+	 * @return Sequence object representing the subsequence from start to stop.
+	 */
 	public Sequence getSubseq(int start, int stop) {
 		return new Sequence(this.seq.substring(start, stop));
 	}
